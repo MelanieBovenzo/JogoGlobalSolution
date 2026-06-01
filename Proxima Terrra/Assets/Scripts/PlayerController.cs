@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
                     dialogueController._isTalking = false;
 
                     dialogueController.examineController = hit.collider.GetComponent<ExamineController>();
+                    dialogueController.examineController.Examine();
 
                     SwitchToDialogue(hit);
                 }
@@ -102,8 +103,6 @@ public class PlayerController : MonoBehaviour
     {
         playerInput.actions.FindActionMap("Player").Disable();
         playerInput.actions.FindActionMap("Dialogue").Enable();
-
-        transform.LookAt(hit.collider.transform);
     }
 
     public void GetMove(InputAction.CallbackContext value)

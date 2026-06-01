@@ -4,14 +4,17 @@ using TMPro;
 using System.Collections;
 using System;
 using System.Linq;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class DialogueController : MonoBehaviour
 {
     // REFERENCES
     [SerializeField] TextMeshProUGUI dialogueText;
+    [SerializeField] TextMeshProUGUI examineTextComponent;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] PlayerController playerController;
     [SerializeField] Canvas dialogueCanvas;
+    [SerializeField] Canvas examineCanvas;
 
     // CONTROL STUFF
     private bool next;
@@ -42,6 +45,8 @@ public class DialogueController : MonoBehaviour
             {
                 playerInput.actions.FindActionMap("Dialogue").Disable();
                 playerInput.actions.FindActionMap("Player").Enable();
+
+                examineCanvas.gameObject.SetActive(false);
             }
             if (_isTalking)
             {
