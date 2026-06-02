@@ -24,6 +24,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] DialogueController dialogueController;
     private bool interacting;
     private bool _canInteract;
+    [SerializeField] TaskController taskController;
+
+    // ITEMS
+    public bool hasCutter;
+    public int rockCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
