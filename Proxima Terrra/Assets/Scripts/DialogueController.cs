@@ -23,7 +23,6 @@ public class DialogueController : MonoBehaviour
     [HideInInspector] public bool _isTalking;
 
     // DIALOGUE
-    private int[] dialogueIndexes;
     private int i;
     private int index;
     public float textSpeed;
@@ -52,10 +51,10 @@ public class DialogueController : MonoBehaviour
             {
                 if (personController._isWriting == false)
                 {
-                    if (dialogueIndexes.Contains(i + 1))
+                    if (personController.dialogueIndexes.Contains(i + 1))
                     {
                         ++i;
-                        index = dialogueIndexes[i];
+                        index = personController.dialogueIndexes[i];
 
                         dialogueText.text = string.Empty;
 
@@ -87,11 +86,9 @@ public class DialogueController : MonoBehaviour
 
     public void StartDialogue()
     {
-        dialogueIndexes = new int[] { 0, 1 };
-
         i = 0;
 
-        index = dialogueIndexes[i];
+        index = personController.dialogueIndexes[i];
 
         dialogueCanvas.gameObject.SetActive(true);
 

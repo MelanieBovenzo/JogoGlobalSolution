@@ -1,13 +1,14 @@
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class ExamineController : MonoBehaviour
 {
     public string examineText;
-    public Image examineImage;
+    public Sprite examineImage;
     [SerializeField] Canvas examineCanvas;
-    [SerializeField] Image examineImageComponent;
+    [SerializeField] UnityEngine.UI.Image examineImageComponent;
     [SerializeField] TextMeshProUGUI examineTextComponent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,7 @@ public class ExamineController : MonoBehaviour
         examineCanvas.gameObject.SetActive(true);
         examineTextComponent.text = string.Empty;
 
-        examineImageComponent = examineImage;
+        examineImageComponent.sprite = examineImage;
         examineTextComponent.text = examineText;
     }
 }

@@ -1,18 +1,29 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class TaskController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI taskText;
-    [SerializeField] TextMeshProUGUI sleepText;
     [SerializeField] PlayerController playerController;
 
+    // UI
+    [SerializeField] TextMeshProUGUI taskText;
+    [SerializeField] TextMeshProUGUI sleepText;
     [SerializeField] Canvas taskCanvas;
     [SerializeField] Canvas sleepCanvas;
 
+    // DAY STUFF
     public int currentDay = 0;
     public bool canSleep = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // TASK STUFF
+    [HideInInspector] public String extraTask1 = String.Empty;
+    [HideInInspector] public bool task1Completed;
+    [HideInInspector] public bool task2Completed;
+
+    // DAY SPECIFIC
+    [HideInInspector] public int talkedTo = 0;
+
     void Start()
     {
         NextDay();
@@ -25,16 +36,25 @@ public class TaskController : MonoBehaviour
         {
             case 1:
                 taskText.text = $"Dia 1 \n" +
-                $"Coletar Pedras {playerController.rockCount.ToString()}/10";
-                if (playerController.rockCount >= 10)
+                $"Conheça a tripulação {talkedTo}\n" +
+                extraTask1;
+                if (task1Completed && task2Completed)
                 {
+                    taskText.text = $"Dia 1 \n" +
+                    $"Conheça a tripulação {talkedTo}\n" +
+                    extraTask1 + "\n Você completou todas as tarefas por hoje, você pode ir dormir" +
+                    "no seu quarto da nave";
                     canSleep = true;
                 }
                 break;
             case 2:
                 taskText.text = $"Dia 2\n" +
-                "Formule �urea";
-                canSleep = true;
+                $"Coletar Pedras {playerController.rockCount.ToString()}/10";
+                canSleep = false;
+                if (playerController.rockCount >= 10)
+                {
+                    canSleep = true;
+                }
                 break;
             default:
                 break;

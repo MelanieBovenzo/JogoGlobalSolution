@@ -110,6 +110,14 @@ public class PlayerController : MonoBehaviour
         playerInput.actions.FindActionMap("Dialogue").Enable();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "TaskTrigger")
+        {
+            taskController.task2Completed = true;
+        }
+    }
+
     public void GetMove(InputAction.CallbackContext value)
     {
         movement = value.ReadValue<Vector2>();

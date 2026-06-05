@@ -6,18 +6,24 @@ using System;
 
 public class PersonController : MonoBehaviour
 {
-    public string personName;
-    public string[] lines;
-    public bool _isWriting;
-    [SerializeField] TextMeshProUGUI dialogueText;
+    // CONTROL
     [SerializeField] DialogueController dialogueController;
+    [HideInInspector] public bool _isWriting = true;
+
+    // UI
+    [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] TextMeshProUGUI personNameText;
+
+    // AUDIO
     [SerializeField] AudioClip protaAudio;
-    [SerializeField] AudioClip humanAudio;
-    [SerializeField] AudioClip alienAudio;
+    [SerializeField] AudioClip npcAudio;
     private AudioSource audioSource;
 
-    private int i;
+    // LINES
+    public int[] dialogueIndexes = new int[] { 0, 1 };
+    public string[] lines;
+    [HideInInspector] public int i;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -30,12 +36,20 @@ public class PersonController : MonoBehaviour
         i = index;
         switch (lines[i][0])
         {
-            case 't':
-                personNameText.text = "Teste";
-                audioSource.clip = humanAudio;
+            case 'j':
+                personNameText.text = "John";
+                audioSource.clip = npcAudio;
                 break;
-            case 'p':
-                personNameText.text = "Prota";
+            case 's':
+                personNameText.text = "Sarah";
+                audioSource.clip = npcAudio;
+                break;
+            case 'c':
+                personNameText.text = "Carl";
+                audioSource.clip = npcAudio;
+                break;
+            case 'a':
+                personNameText.text = "Anahí";
                 audioSource.clip = protaAudio;
                 break;
         }
@@ -46,7 +60,7 @@ public class PersonController : MonoBehaviour
     {
         StopAllCoroutines();
         audioSource.Play();
-        dialogueText.text = lines[i];
+        dialogueText.text = lines[i].Substring(1);
         _isWriting = false;
     }
 
