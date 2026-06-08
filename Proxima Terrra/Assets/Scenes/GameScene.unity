@@ -6638,27 +6638,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6232842
+      value: 0.75035894
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2696449
+      value: 0.3246199
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5402066
+      value: 0.65034354
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -63.5
+      value: -67.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.6
+      value: -4.99
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.313669
+      value: 11.58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6688,6 +6688,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -3846018093981099296, guid: f0cf49f0afe87114eb964cbe9b4d7011, type: 3}
     - target: {fileID: -4292154010595695564, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.3
@@ -6738,7 +6742,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -462981019419857548, guid: e312e63bfc0d2624eaf2beed3dbf42cf, type: 3}
+  m_Mesh: {fileID: -462981019419857548, guid: f0cf49f0afe87114eb964cbe9b4d7011, type: 3}
 --- !u!1 &1988665393
 GameObject:
   m_ObjectHideFlags: 0
