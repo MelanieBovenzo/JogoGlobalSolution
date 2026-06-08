@@ -32,6 +32,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Options",
+                    "type": "Button",
+                    "id": "a0a0ca0a-14d0-4d9d-885b-38388b9b3dd7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -254,6 +263,28 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "595fa85d-c3f9-4a36-9e60-c8f21e493f7f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Options",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eec5dfa0-89d5-4a78-8256-b2a095c5e05e",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Options",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -295,6 +326,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Options",
+            "id": "5ec5d690-90a1-47fe-b5b3-fba161285d3e",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": []

@@ -1,9 +1,15 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     [SerializeField] GameObject hoverImage;
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        hoverImage.SetActive(false);
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         hoverImage.SetActive(true);

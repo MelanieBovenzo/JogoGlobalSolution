@@ -30,12 +30,14 @@ public class DialogueController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        textSpeed = Settings.textSpeed;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        textSpeed = Settings.textSpeed;
+
         if (next && _canNext)
         {
             if (_isExamining)

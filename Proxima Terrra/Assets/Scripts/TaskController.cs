@@ -41,6 +41,10 @@ public class TaskController : MonoBehaviour
                 taskText.text = $"Dia 1 \n" +
                 $"Conheça a tripulação {talkedTo}/3\n" +
                 extraTask1;
+                if (task2Completed)
+                {
+                    taskText.text += " (Completa!)";
+                }
                 if (task1Completed && task2Completed)
                 {
                     taskText.text = $"Dia 1 \n" +

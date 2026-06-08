@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using System;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ public class ButtonController : MonoBehaviour
     [SerializeField] GameObject mainCanvas;
     [SerializeField] GameObject optionsCanvas;
     [SerializeField] AudioMixer audioMixer;
-    [SerializeField] UnityEngine.UI.Image fullscreenButton;
+    [SerializeField] Image fullscreenButton;
 
     [SerializeField] TMP_Dropdown resolutionDropdown;
     Resolution[] resolutions;
+
+    [SerializeField] PlayerInput playerInput;
 
     void Start()
     {
@@ -58,8 +61,19 @@ public class ButtonController : MonoBehaviour
     // OPTIONS
     public void CloseOptions()
     {
+        if (mainCanvas != null)
+        {
+            mainCanvas.SetActive(true);
+        }
+        else
+        {
+            playerInput.actions.FindActionMap("Player").Enable();
+            playerInput.actions.FindActionMap("Options").Disable();
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1;
+        }
         optionsCanvas.SetActive(false);
-        mainCanvas.SetActive(true);
     }
     public void ChangeVolume(float vol)
     {

@@ -24,6 +24,7 @@ public class CapitaoController : MonoBehaviour
             {
                 case 5:
                     taskController.extraTask1 = "Saia da nave";
+                    taskController.task2Started = true;
                     if (!talked)
                     {
                         talked = true;

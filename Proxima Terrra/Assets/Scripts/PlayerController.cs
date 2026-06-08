@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
     public int rockCount;
     [HideInInspector] public bool hasTranslator;
 
+    // MENUS
+    private bool options;
+    [SerializeField] GameObject optionsCanvas;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,8 +42,6 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         currentMovement.y = gravity;
-
-        cameraSensitivity = Settings.mouseSensitivity;
     }
 
     void FixedUpdate()
@@ -55,6 +57,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cameraSensitivity = Settings.mouseSensitivity;
+
         // HORIZONTAL ROTATION
         transform.Rotate(0, mouseRotation.x * Time.deltaTime * cameraSensitivity, 0);
 
@@ -105,6 +109,19 @@ public class PlayerController : MonoBehaviour
         {
             _canInteract = true;
         }
+
+        if (options)
+        {
+            optionsCanvas.SetActive(true);
+
+            Time.timeScale = 0;
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
+            playerInput.actions.FindActionMap("Player").Disable();
+            playerInput.actions.FindActionMap("Options").Enable();
+        }
     }
 
     private void SwitchToDialogue()
@@ -115,9 +132,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "TaskTrigger" && taskController.task1Started)
+        if (other.gameObject.tag == "TaskTrigger" && taskController.task2Started)
         {
             taskController.task2Completed = true;
+            Destroy(other.gameObject);
         }
     }
 
@@ -136,5 +154,8 @@ public class PlayerController : MonoBehaviour
         interacting = value.performed;
     }
 
-
+    public void GetOptions(InputAction.CallbackContext value)
+    {
+        options = value.performed;
+    }
 }
