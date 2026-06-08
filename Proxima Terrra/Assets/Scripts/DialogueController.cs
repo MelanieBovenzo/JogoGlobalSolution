@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using System.Collections;
 using System;
 using System.Linq;
-using Microsoft.Unity.VisualStudio.Editor;
 
 public class DialogueController : MonoBehaviour
 {
@@ -32,7 +30,7 @@ public class DialogueController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        textSpeed = Settings.textSpeed;
     }
 
     // Update is called once per frame

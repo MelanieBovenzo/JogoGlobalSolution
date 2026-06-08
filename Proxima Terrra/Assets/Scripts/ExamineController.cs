@@ -1,7 +1,5 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using TMPro;
-using System;
 
 public class ExamineController : MonoBehaviour
 {

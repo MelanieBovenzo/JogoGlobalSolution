@@ -1,11 +1,14 @@
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CapitaoController : MonoBehaviour
 {
     [SerializeField] PersonController personController;
     [SerializeField] TaskController taskController;
+
+    private bool talked = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +24,11 @@ public class CapitaoController : MonoBehaviour
             {
                 case 5:
                     taskController.extraTask1 = "Saia da nave";
-                    taskController.talkedTo++;
+                    if (!talked)
+                    {
+                        talked = true;
+                        taskController.talkedTo++;
+                    }
                     personController.dialogueIndexes = new int[] { 6 };
                     break;
             }

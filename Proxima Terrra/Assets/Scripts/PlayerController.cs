@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     // ITEMS
     public bool hasCutter;
     public int rockCount;
+    [HideInInspector] public bool hasTranslator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         currentMovement.y = gravity;
+
+        cameraSensitivity = Settings.mouseSensitivity;
     }
 
     void FixedUpdate()
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
                     dialogueController.personController = hit.collider.GetComponent<PersonController>();
                     dialogueController.StartDialogue();
 
-                    SwitchToDialogue(hit);
+                    SwitchToDialogue();
                 }
                 if (hit.collider.tag == "Examine")
                 {
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviour
                     dialogueController.examineController = hit.collider.GetComponent<ExamineController>();
                     dialogueController.examineController.Examine();
 
-                    SwitchToDialogue(hit);
+                    SwitchToDialogue();
                 }
                 if (hit.collider.tag == "Interact")
                 {
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SwitchToDialogue(RaycastHit hit)
+    private void SwitchToDialogue()
     {
         playerInput.actions.FindActionMap("Player").Disable();
         playerInput.actions.FindActionMap("Dialogue").Enable();
@@ -112,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "TaskTrigger")
+        if (other.gameObject.tag == "TaskTrigger" && taskController.task1Started)
         {
             taskController.task2Completed = true;
         }

@@ -20,6 +20,8 @@ public class TaskController : MonoBehaviour
     [HideInInspector] public String extraTask1 = String.Empty;
     [HideInInspector] public bool task1Completed;
     [HideInInspector] public bool task2Completed;
+    [HideInInspector] public bool task1Started;
+    [HideInInspector] public bool task2Started;
 
     // DAY SPECIFIC
     [HideInInspector] public int talkedTo = 0;
@@ -35,13 +37,14 @@ public class TaskController : MonoBehaviour
         switch (currentDay)
         {
             case 1:
+
                 taskText.text = $"Dia 1 \n" +
-                $"Conheça a tripulação {talkedTo}\n" +
+                $"Conheça a tripulação {talkedTo}/3\n" +
                 extraTask1;
                 if (task1Completed && task2Completed)
                 {
                     taskText.text = $"Dia 1 \n" +
-                    $"Conheça a tripulação {talkedTo}\n" +
+                    $"Conheça a tripulação {talkedTo}/3\n" +
                     extraTask1 + "\n Você completou todas as tarefas por hoje, você pode ir dormir" +
                     "no seu quarto da nave";
                     canSleep = true;
@@ -69,6 +72,21 @@ public class TaskController : MonoBehaviour
         sleepText.text = $"Dia {currentDay}";
         canSleep = false;
         Invoke("WakeUp", 2f);
+        switch (currentDay)
+        {
+            case 1:
+                task1Started = true;
+                task2Started = false;
+                break;
+            case 2:
+                task1Started = false;
+                task2Started = false;
+                break;
+            default:
+                break;
+        }
+        task1Completed = false;
+        task2Completed = false;
     }
 
     private void WakeUp()
