@@ -1,0 +1,94 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using System;
+using UnityEngine.UI;
+using System.Collections.Generic;
+using TMPro;
+
+public class ButtonController : MonoBehaviour
+{
+    [SerializeField] GameObject mainCanvas;
+    [SerializeField] GameObject optionsCanvas;
+    [SerializeField] AudioMixer audioMixer;
+    [SerializeField] UnityEngine.UI.Image fullscreenButton;
+
+    [SerializeField] TMP_Dropdown resolutionDropdown;
+    Resolution[] resolutions;
+
+    void Start()
+    {
+        resolutions = Screen.resolutions;
+
+        resolutionDropdown.ClearOptions();
+
+        int currentResI = 0;
+        List<string> options = new List<string>();
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            options.Add($"{resolutions[i].width} x {resolutions[i].height}");
+
+            if (resolutions[i].width == Screen.currentResolution.width &&
+            resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResI = i;
+            }
+        }
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResI;
+        resolutionDropdown.RefreshShownValue();
+    }
+
+    // MAIN MENU
+    public void PlayAction()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+    public void QuitAction()
+    {
+        Application.Quit();
+    }
+    public void OpenOptions()
+    {
+        optionsCanvas.SetActive(true);
+        mainCanvas.SetActive(false);
+    }
+
+    // OPTIONS
+    public void CloseOptions()
+    {
+        optionsCanvas.SetActive(false);
+        mainCanvas.SetActive(true);
+    }
+    public void ChangeVolume(float vol)
+    {
+        audioMixer.SetFloat("MasterVolume", vol);
+    }
+    public void ChangeSensitivity(float sens)
+    {
+        Settings.mouseSensitivity = sens;
+    }
+    public void ChangeTextSpeed(float speed)
+    {
+        Settings.textSpeed = speed;
+    }
+    public void ToggleFullscreen()
+    {
+        if (Screen.fullScreen)
+        {
+            Screen.fullScreen = false;
+            fullscreenButton.color = new Color(1, 1, 1, 0);
+        }
+        else
+        {
+            Screen.fullScreen = true;
+            fullscreenButton.color = new Color(1, 1, 1, 1);
+        }
+    }
+    public void SetResolution(int resIndex)
+    {
+        Resolution res = resolutions[resIndex];
+        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+    }
+}
