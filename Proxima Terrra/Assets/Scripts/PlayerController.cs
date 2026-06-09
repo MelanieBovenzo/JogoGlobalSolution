@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool interacting;
     private bool _canInteract;
     [SerializeField] TaskController taskController;
+    [SerializeField] TextMeshProUGUI interactionText;
 
     // ITEMS
     public bool hasCutter;
@@ -71,35 +73,67 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 2.5f))
         {
-            if (interacting && _canInteract)
+            if (_canInteract)
             {
-
                 if (hit.collider.tag == "Person")
                 {
-                    dialogueController._isExamining = false;
-                    dialogueController._isTalking = true;
+                    if (interacting)
+                    {
+                        interactionText.text = string.Empty;
+                        dialogueController._isExamining = false;
+                        dialogueController._isTalking = true;
 
-                    dialogueController.personController = hit.collider.GetComponent<PersonController>();
-                    dialogueController.StartDialogue();
+                        dialogueController.personController = hit.collider.GetComponent<PersonController>();
+                        dialogueController.StartDialogue();
 
-                    SwitchToDialogue();
+                        SwitchToDialogue();
+                    }
+                    else
+                    {
+                        interactionText.text = "Pressione [E] para conversar";
+                    }
                 }
-                if (hit.collider.tag == "Examine")
+                else if (hit.collider.tag == "Examine")
                 {
-                    dialogueController._isExamining = true;
-                    dialogueController._isTalking = false;
+                    if (interacting)
+                    {
+                        interactionText.text = string.Empty;
+                        dialogueController._isExamining = true;
+                        dialogueController._isTalking = false;
 
-                    dialogueController.examineController = hit.collider.GetComponent<ExamineController>();
-                    dialogueController.examineController.Examine();
+                        dialogueController.examineController = hit.collider.GetComponent<ExamineController>();
+                        dialogueController.examineController.Examine();
 
-                    SwitchToDialogue();
+                        SwitchToDialogue();
+                    }
+                    else
+                    {
+                        interactionText.text = "Pressione [E] para examinar";
+                    }
                 }
-                if (hit.collider.tag == "Interact")
+                else if (hit.collider.tag == "Interact")
                 {
-                    hit.collider.GetComponent<InteractionController>().Interaction();
+                    if (interacting)
+                    {
+                        interactionText.text = string.Empty;
+                        hit.collider.GetComponent<InteractionController>().Interaction();
+                    }
+                    else
+                    {
+                        interactionText.text = "Pressione [E] para interagir";
+                    }
                 }
-            }
+                else
+                {
+                    interactionText.text = string.Empty;
+                }
+            }           
         }
+        else
+        {
+            interactionText.text = string.Empty;
+        }
+
 
         if (interacting)
         {

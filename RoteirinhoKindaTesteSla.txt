@@ -13,6 +13,45 @@ Dia 1:
 - explorar a nave
 - sair um pouco dar uma olhadinha
 
+Capitão Ford:
+aOlá capitão, tudo bem?
+cQue foi? Você está aqui pra trabalhar, não pra bater papo.
+a...
+cArrumei algo bom pra você fazer, sai da nave e seja a primeira a dar uma olhada nos arredores, vê se você se faz útil.
+aOk capitão?
+
+(enquanto não foi)
+cQue foi? Não me ouviu direito? Sai da nave e dá uma olhada em volta, e vai logo!
+
+(depois de ir)
+cEntão, viu algo útil?
+aSó um deserto com algumas pedras contendo os critais que pediram pra gente estudar.
+cHmm, nada que ja não sabíamos.
+
+Hana:
+aOi, você é a cientista da nave né? Não te vi muito na Nave-Mãe.
+hÉ, eu tendo a focar bastante nos meus estudos, estava muito intrigada pois encontrei possíveis sinais de vida nesse planeta.
+aQue interessante, não lembro de ler nada sobre isso nos arquivos da missão.
+hÉ apenas uma hipótese distante e recente por enquanto, mas vou investigar mais enquanto estiver aqui.
+aEntendi, foi bom conversar com você.
+hIgualmente, você é a única pessoa que parece realmente interessada na missão, talvez você seja boa pra me ajudar.
+aEu adoraria.
+
+hOi, precisa de mim?
+aComo está suas investigações?
+hAinda não descobri nada perto de concreto.
+aAh ok, me mantenha atualizada.
+hEu vou.
+
+Billy:
+aOlá, você é encarregado pelos consertos da nave, certo?
+bInfelizmente, essa nem sei como essa coisa conseguiu chegar até aqui com tanta coisa faltando.
+aCaramba, a empresa não faz checagens de segurança pra se certificar que está tudo certinho?
+bFaz muito mal, eles só querem que a nave não exploda gastando o mínimo de dinheiro possível.
+aSei...
+
+bEstou ocupado.
+
 Dia 2:
 querem recurso
 combustível
@@ -22,6 +61,60 @@ coletar cristais
 (nono cristal alien levanta do chão e primeiro encontro)
 "??!**&+=#?!*(*&+=#"
 - entregar pro capitão (fala pra ele dos alien aí ele fala q vai pensar)
+
+Capitão Ford:
+cEi, "Anari", pega aquela ferramenta em cima da mesa e vai coletar alguns cristais.
+aMeu nome é Anahí, senhor.
+cSeu nome não importa, o que importa são os cristais.
+
+cVolte quando você conseguir 10 fragmentos de cristal.
+
+(depois de pegar os cristal)
+aAqui capitão, consegui os cristais que você me pediu.
+cBom trabalho.
+aE quando eu coletei o último fragmento eu entrei em contato com uma forma de vida daqui?
+cO quê? Você tem certeza?
+aSim, eu acho que ele tentou falar comigo...
+cVocê tem mais alguma informação sobre eles?
+aA rocha com cristal nela estava nas costas de um deles, como se fosse um casco.
+cEu vou entrar em contato com o comando, só continue obedecendo minhas ordens e evite contato com eles por enquanto.
+
+cVolte ao trabalho.
+
+Hana:
+aOlá Hana, como vão os estudos?
+hEsses cristais parecem ter propriedades extremamente propícias para usá-los como combustível
+aInteressante.
+hEu estimo que, se eles forem viáveis para uso como combustíveis, eles serão 10x mais eficientes do que qualquer combustível da Terra.
+
+(depois de pegar os cristais)
+aHana, você estava certa.
+hSobre o quê?
+aSobre ter vida alienígena nesse planeta, eu vi um agora pouco e... eu acho que ele falou comigo
+hInteressante, muito interessante... onde você viu ele?
+aEu estava coletando cristais nas pedras da superfície e uma pedra na verdade era uma espécie de casco da criatura.
+hEntendi, obrigada por me contar.
+aPor nada!
+
+aO que você acha sobre os alienígenas?
+hPelo que você me contou sobre os cristais ficarem nas costas deles, talvez eles os usam como energia.
+aCaramba, então nós estamos roubando a energia deles?
+hAlgo assim, quando eu receber uma amostra de um fragmento que você coletou eu posso ter mais certeza.
+
+Billy:
+(lá fora do lado da nave)
+aOlá Billy, o que você está fazendo?
+bConsertando a nave, vou ter que fazer isso por um bom tempo. Essa nave não vai sair do chão pra voltar à Nave-Mãe até eu arrumar bastante coisa.
+aEntão nós estamos presos aqui?
+bBasicamente sim.
+
+(se n tem ferramenta)
+bEstou ocupado.
+
+(se tem ferramenta)
+bInclusive você deveria me agradecer por poder usar essa ferramenta de coleta de cristais, eu que consertei ela.
+aObrigada!
+bEla ficou toda destruída quando pousamos aqui, igual nossa nave...
 
 Dia 3:
 - pegar mais cristal ainda
@@ -33,6 +126,47 @@ Dia 3:
  - pegar mais 2 cristalzinho (sabendo q é paia pegar)
  - roubar as peça do CLT fodido no quarto dele sla (ele conserta a nave)
  - entrega td pra cientista
+
+Capitão Ford:
+c"Analí", hoje você vai coletar cristais para estudo novamente.
+aVocê tem certeza capitão? Isso não parece ser ideal para vida desse planeta.
+cApenas obedeça minhas ordens, mocinha.
+a...
+
+cJá conseguiu os cristais?
+aCapitão, eu acho que esses cristais são importantes para os alienígenas, não acha melhor...
+cSe você se recusar a seguir uma ordem direta mais uma vez eu te expulso dessa nave e deixo seu óxigênio acabar lá fora.
+
+(depois de pegar os cristal)
+cJá conseguiu os cristais?
+aSim, capitão.
+cPra você saber, essas criaturas que você parece ter feito amizade atacaram o Billy quando ele foi coletar cristais, ele está no quarto dele se recuperando.
+aEle está bem?
+cEle vai ficar. Eu acho. Espero que sim, essa nave ainda precisa de consertos. Essas criaturinhas de merda no nosso planeta só atrapalham tudo...
+
+Hana:
+aNós temos que fazer algo sobre a exploração desses seres, eles só querem extrair mais e mais cristais pelo lucro e a vida alienígena está em perigo!
+hCalma Anahí, respira. Olha, eu tenho um projeto que talvez possa ajudar.
+aQual?
+hEu estive trabalhando há um tempo em um dispositivo tradutor capaz de reconhecer qualquer língua rapidamente e traduzir de ambas as direções
+aQue legal! Mas ele conseguiria aprender línguas alienígenas?
+hEle foi feito pra isso.
+aEntendi, eu posso pegar ele emprestado pra tentar me comunicar e fazer o capitão entender as preocupações deles?
+hNa verdade ele nunca foi construído, eu precisaria de uma fonte de energia enorme pra fazê-lo funcionar. Você poderia conseguir as partes dele e eu construo o tradutor.
+aDo que você precisa?
+hDe um pouco mais de cristal como fonte de energia, uns 2 fragmentos devem ser suficientes, e de uma antena. Acho que você acha uma dessas no quarto do Billy.
+aOk, quando conseguir eu te trago.
+
+hConseguiu as peças pro tradutor?
+aAinda não, mas não sei se é muito legal coletar mais um fragmento de cristal de um alien.
+hNão dá pra fazer um omelete sem quebrar alguns ovos.
+aÉ, acho que não...
+
+Billy:
+aVocê está melhor? Me contaram que um alienígena te atacou.
+bTô sim, ele só bateu no meu braço mas parece que não quebrou nada.
+aQue bom...
+bÉ bom que eu tive um tempo de descanso pelo menos, agora tenho que voltar a trabalhar.
 
 Dia 4:
 ficaram sem dormir pq os alien ficaram uivando

@@ -10,6 +10,7 @@ using TMPro;
 public class ButtonController : MonoBehaviour
 {
     [SerializeField] GameObject mainCanvas;
+    [SerializeField] GameObject pauseCanvas;
     [SerializeField] GameObject optionsCanvas;
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] Image fullscreenButton;
@@ -22,25 +23,26 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         resolutions = Screen.resolutions;
-
-        resolutionDropdown.ClearOptions();
-
-        int currentResI = 0;
-        List<string> options = new List<string>();
-        for (int i = 0; i < resolutions.Length; i++)
+        if (resolutionDropdown != null )
         {
-            options.Add($"{resolutions[i].width} x {resolutions[i].height}");
-
-            if (resolutions[i].width == Screen.currentResolution.width &&
-            resolutions[i].height == Screen.currentResolution.height)
+            resolutionDropdown.ClearOptions();
+            int currentResI = 0;
+            List<string> options = new List<string>();
+            for (int i = 0; i < resolutions.Length; i++)
             {
-                currentResI = i;
-            }
-        }
+                options.Add($"{resolutions[i].width} x {resolutions[i].height}");
 
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResI;
-        resolutionDropdown.RefreshShownValue();
+                if (resolutions[i].width == Screen.currentResolution.width &&
+                resolutions[i].height == Screen.currentResolution.height)
+                {
+                    currentResI = i;
+                }
+            }
+
+            resolutionDropdown.AddOptions(options);
+            resolutionDropdown.value = currentResI;
+            resolutionDropdown.RefreshShownValue();
+        }
     }
 
     // MAIN MENU
@@ -48,14 +50,26 @@ public class ButtonController : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+    public void QuitGameAction()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
     public void QuitAction()
     {
         Application.Quit();
     }
     public void OpenOptions()
     {
+        if (mainCanvas != null)
+        {
+            mainCanvas.SetActive(false);
+        }
+        else
+        {
+            pauseCanvas.SetActive(false);
+        }
         optionsCanvas.SetActive(true);
-        mainCanvas.SetActive(false);
+        
     }
 
     // OPTIONS
@@ -67,13 +81,18 @@ public class ButtonController : MonoBehaviour
         }
         else
         {
-            playerInput.actions.FindActionMap("Player").Enable();
-            playerInput.actions.FindActionMap("Options").Disable();
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1;
+            pauseCanvas.SetActive(true);
         }
         optionsCanvas.SetActive(false);
+    }
+    public void ResumeAction()
+    {
+        playerInput.actions.FindActionMap("Player").Enable();
+        playerInput.actions.FindActionMap("Options").Disable();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
+        pauseCanvas.SetActive(false);
     }
     public void ChangeVolume(float vol)
     {
