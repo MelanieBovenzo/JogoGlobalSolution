@@ -20,7 +20,7 @@ public class PersonController : MonoBehaviour
     private AudioSource audioSource;
 
     // LINES
-    public int[] dialogueIndexes = new int[] { 0, 1 };
+    public int[] dialogueIndexes;
     public string[] lines;
     [HideInInspector] public int i;
     private bool isAlien = false;
@@ -33,7 +33,6 @@ public class PersonController : MonoBehaviour
 
     public void WriteLine(int index)
     {
-
         i = index;
         switch (lines[i][0])
         {

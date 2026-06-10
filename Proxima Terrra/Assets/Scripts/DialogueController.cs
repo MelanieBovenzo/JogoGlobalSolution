@@ -22,7 +22,6 @@ public class DialogueController : MonoBehaviour
 
     // DIALOGUE
     private int i;
-    private int index;
     public float textSpeed;
     [HideInInspector] public PersonController personController;
     [HideInInspector] public ExamineController examineController;
@@ -54,17 +53,17 @@ public class DialogueController : MonoBehaviour
                     if (personController.dialogueIndexes.Contains(i + 1))
                     {
                         ++i;
-                        index = personController.dialogueIndexes[i];
 
                         dialogueText.text = string.Empty;
 
-                        personController.WriteLine(index);
+                        personController.WriteLine(i);
                     }
                     else
                     {
                         dialogueCanvas.gameObject.SetActive(false);
                         playerInput.actions.FindActionMap("Dialogue").Disable();
                         playerInput.actions.FindActionMap("Player").Enable();
+                        _isTalking = false;
                     }
                 }
                 else
@@ -86,15 +85,13 @@ public class DialogueController : MonoBehaviour
 
     public void StartDialogue()
     {
-        i = 0;
-
-        index = personController.dialogueIndexes[i];
+        i = personController.dialogueIndexes[0];
 
         dialogueCanvas.gameObject.SetActive(true);
 
         dialogueText.text = string.Empty;
 
-        personController.WriteLine(index);
+        personController.WriteLine(i);
     }
 
 

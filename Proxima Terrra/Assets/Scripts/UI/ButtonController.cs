@@ -12,6 +12,7 @@ public class ButtonController : MonoBehaviour
     [SerializeField] GameObject mainCanvas;
     [SerializeField] GameObject pauseCanvas;
     [SerializeField] GameObject optionsCanvas;
+    [SerializeField] GameObject cutscene;
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] Image fullscreenButton;
 
@@ -23,7 +24,7 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         resolutions = Screen.resolutions;
-        if (resolutionDropdown != null )
+        if (resolutionDropdown != null)
         {
             resolutionDropdown.ClearOptions();
             int currentResI = 0;
@@ -48,6 +49,12 @@ public class ButtonController : MonoBehaviour
     // MAIN MENU
     public void PlayAction()
     {
+        cutscene.SetActive(true);
+        mainCanvas.SetActive(false);
+        Invoke("GameScene", 18f);
+    }
+    private void GameScene()
+    {
         SceneManager.LoadScene("GameScene");
     }
     public void QuitGameAction()
@@ -69,7 +76,7 @@ public class ButtonController : MonoBehaviour
             pauseCanvas.SetActive(false);
         }
         optionsCanvas.SetActive(true);
-        
+
     }
 
     // OPTIONS

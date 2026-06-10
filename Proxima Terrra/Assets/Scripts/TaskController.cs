@@ -25,6 +25,8 @@ public class TaskController : MonoBehaviour
 
     // DAY SPECIFIC
     [HideInInspector] public int talkedTo = 0;
+    [SerializeField] GameObject rockCutter;
+    [SerializeField] GameObject translator;
 
     void Start()
     {
@@ -37,7 +39,11 @@ public class TaskController : MonoBehaviour
         switch (currentDay)
         {
             case 1:
-
+                rockCutter.SetActive(false);
+                if (talkedTo == 3)
+                {
+                    task1Completed = true;
+                }
                 taskText.text = $"Dia 1 \n" +
                 $"Conheça a tripulação {talkedTo}/3\n" +
                 extraTask1;
@@ -49,17 +55,44 @@ public class TaskController : MonoBehaviour
                 {
                     taskText.text = $"Dia 1 \n" +
                     $"Conheça a tripulação {talkedTo}/3\n" +
-                    extraTask1 + "\n Você completou todas as tarefas por hoje, você pode ir dormir" +
+                    extraTask1 + " (Completa!)\n Você completou todas as tarefas por hoje, você pode ir dormir " +
                     "no seu quarto da nave";
                     canSleep = true;
                 }
                 break;
             case 2:
-                taskText.text = $"Dia 2\n" +
-                $"Coletar Pedras {playerController.rockCount.ToString()}/10";
-                canSleep = false;
-                if (playerController.rockCount >= 10)
+                if (rockCutter != null)
                 {
+                    rockCutter.SetActive(true);
+                    rockCutter.tag = "Untagged";
+                }
+                if (task2Started)
+                {
+                    taskText.text = $"Dia 2\n" +
+                    $"Coletar Pedras {playerController.rockCount}/10";
+                    canSleep = false;
+                    if (playerController.rockCount >= 10)
+                    {
+                        task2Completed = true;
+                    }
+                }
+                else if (task1Started)
+                {
+                    taskText.text = $"Dia 2\n" +
+                    extraTask1;
+                    rockCutter.tag = "Interact";
+                }
+                else
+                {
+                    taskText.text = $"Dia 2\n" +
+                    "Fale com Capitão Ford para receber sua tarefa";
+                }
+                if (task1Completed && task2Completed)
+                {
+                    taskText.text = $"Dia 2\n" +
+                     $"Coletar Pedras {playerController.rockCount}/10" +
+                     "\n Você completou todas as tarefas por hoje, você pode ir dormir " +
+                     "no seu quarto da nave";
                     canSleep = true;
                 }
                 break;

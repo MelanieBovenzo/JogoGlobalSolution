@@ -19,8 +19,10 @@ public class InteractionController : MonoBehaviour
     [SerializeField] TaskController taskController;
 
     public string interactionType;
-    
+
     private AudioSource audioSource;
+
+    [SerializeField] GameObject alienObject;
 
     private void Awake()
     {
@@ -48,13 +50,20 @@ public class InteractionController : MonoBehaviour
                 }
                 break;
             case "PickupRock":
-                playerController.gameObject.GetComponent<AudioSource>().Play();
-                Invoke("CutRock", 1f);
+                if (playerController.hasCutter)
+                {
+                    playerController.gameObject.GetComponent<AudioSource>().Play();
+                    Invoke("CutRock", 1f);
+                }
                 break;
             case "PickupCutter":
+                playerController.hasCutter = true;
+                taskController.task1Completed = true;
+                taskController.task2Started = true;
+                Destroy(gameObject);
                 break;
             case "Sleep":
-                if(taskController.canSleep)
+                if (taskController.canSleep)
                 {
                     taskController.NextDay();
                 }
@@ -72,7 +81,15 @@ public class InteractionController : MonoBehaviour
     {
         audioSource.Play();
         playerController.rockCount += 1;
-        Destroy(this.gameObject);
+        if (playerController.rockCount >= 10)
+        {
+            alienObject.transform.position = transform.parent.parent.position;
+            alienObject.transform.rotation = transform.parent.parent.rotation;
+            alienObject.transform.position -= new Vector3(0, 0.6f, 0);
+            alienObject.transform.rotation = new Quaternion(0.000275107101f, 0.984789252f, -0.166004419f, 0.0513080917f);
+            Destroy(transform.parent.parent.gameObject);
+        }
+        Destroy(gameObject);
     }
 
     private void openDoor()
