@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Threading.Tasks;
 
 public class TaskController : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class TaskController : MonoBehaviour
     [HideInInspector] public int talkedTo = 0;
     [SerializeField] GameObject rockCutter;
     [SerializeField] GameObject translator;
+    [HideInInspector] public bool translatorBuilding = false;
 
     void Start()
     {
@@ -90,10 +92,24 @@ public class TaskController : MonoBehaviour
                 if (task1Completed && task2Completed)
                 {
                     taskText.text = $"Dia 2\n" +
-                     $"Coletar Pedras {playerController.rockCount}/10" +
+                     $"Coletar cristais {playerController.rockCount}/10" +
                      "\n Você completou todas as tarefas por hoje, você pode ir dormir " +
                      "no seu quarto da nave";
                     canSleep = true;
+                }
+                break;
+            case 3:
+                taskText.tag = $"Dia 3\n" +
+                    "Fale com Capitão Ford para receber sua tarefa";
+                if (task1Started)
+                {
+                    taskText.tag = $"Dia 3\n" +
+                    $"Colete mais cristais {playerController.rockCount}/10";
+                }
+                if (task2Started)
+                {
+                    taskText.text += $"Coletar antena\n" +
+                    $"Coletar fragmentos de cristal {playerController.rockCount}/2";
                 }
                 break;
             default:
