@@ -104,12 +104,33 @@ public class TaskController : MonoBehaviour
                 if (task1Started)
                 {
                     taskText.tag = $"Dia 3\n" +
-                    $"Colete mais cristais {playerController.rockCount}/10";
+                    $"Colete mais cristais {playerController.rockCount}/10\n";
+                    if (task1Completed)
+                    {
+                        taskText.tag = $"Dia 3\n" +
+                        $"Colete mais cristais {playerController.rockCount}/10 (Completa!)\n";
+                    }
                 }
                 if (task2Started)
                 {
-                    taskText.text += $"Coletar antena\n" +
-                    $"Coletar fragmentos de cristal {playerController.rockCount}/2";
+                    taskText.text += "Coletar antena";
+                    if (playerController.hasAntenna)
+                    {
+                        taskText.text += " (Completa!)";
+                    }
+                    if (playerController.rockCount <= 10)
+                    {
+                        taskText.text += "\nColetar fragmentos de cristal 0/2";
+                    }
+                    else
+                    {
+                        taskText.text += $"\nColetar fragmentos de cristal {playerController.rockCount - 10}/2";
+                    }
+                    if (playerController.hasAntenna && playerController.rockCount >= 12)
+                    {
+                        taskText.text += "\nFale com Hana para entregar os materiais do tradutor";
+                        task2Completed = true;
+                    }
                 }
                 break;
             default:

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     // ITEMS
     public bool hasCutter;
+    public bool hasAntenna;
     public int rockCount;
     [HideInInspector] public bool hasTranslator;
 
